@@ -1,0 +1,108 @@
+@font-face{
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Italic.ttf');
+}
+
+@font-face{
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins/Poppins-MediumItalic.ttf');
+}
+
+/* Reset de CSS */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Fuente general */
+html{
+    font-family: 'Poppins', sans-serif;
+    /* font-size: 15px; */
+    background-color: #6b6b77;
+}
+
+.inicio_fijo{
+    background-color: #073181;
+    color: black;
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    margin: 0; /* Cambiamos el margin a 0 para eliminar cualquier espacio no deseado */
+    border: 3px solid #e80c0d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Nos aseguramos que inicio_fijo quede arriba permanentemente */
+}
+
+.inicio_fijo img {
+    width: 30%;
+    height: 100%;
+    margin: 0 2px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white; 
+    padding: 10px;
+    background-color: #e80c0d; 
+    border-radius: 60px;
+}
+
+.nav-list li a:hover {
+    background-color: black; 
+}
+/* Copiar todo lo que está arriba de esto para que quede fijo el mismo banner */
+/* ------------------------------------------------------------------------------- */
+
+body{
+    padding-top: 160px;
+}
+
+main{
+    text-align: center;
+}
+
+main section{
+    display: inline-block;
+    width: 100%;
+}
+
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 5px;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+.card-contenedor{
+    padding: 10px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+    width: 300px;
+    height: 350px;
+    border: 4px solid #073181;
+    border-radius: 10%;
+}
+
+
+.card-contenedor img{
+    width: 90%;
+}
