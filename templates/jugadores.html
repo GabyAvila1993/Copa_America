@@ -20,83 +20,58 @@
         </nav>
     </section>
 
+    <section class="contenedor">
+        <div class="selector">
+            <h3>Selección Izquierda</h3>
+            <select id="seleccion-izquierda" onchange="updatePlayer('izquierda')">
+                <option value="">Seleccione una selección</option>
+                <option value="1">Argentina</option>
+                <option value="2">Brasil</option>
+                <option value="3">Chile</option>
+            </select>
+            <div id="jugador-izquierda"></div>
+        </div>
 
-    <!-- <main>
-        <section class="contenedor">
-            <article class="card-contenedor">
-                <h2>lorem 3</h2>
-                <img src="../assets/Callejeros.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta ratione nesciunt sequi! Omnis quisquam quasi deleniti unde laboriosam voluptas quam ipsa sint sunt quod ipsum deserunt non id, laborum ipsam!</p>
-            </article>
-            <article class="card-contenedor">
-                <h2>lorem 3</h2>
-                <img src="../assets/Callejeros.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta ratione nesciunt sequi! Omnis quisquam quasi deleniti unde laboriosam voluptas quam ipsa sint sunt quod ipsum deserunt non id, laborum ipsam!</p>
-            </article>
-            <article class="card-contenedor">
-                <h2>lorem 3</h2>
-                <img src="../assets/Callejeros.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta ratione nesciunt sequi! Omnis quisquam quasi deleniti unde laboriosam voluptas quam ipsa sint sunt quod ipsum deserunt non id, laborum ipsam!</p>
-            </article>
-            <article class="card-contenedor">
-                <h2>lorem 4</h2>
-                <img src="../assets/Callejeros.png" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta ratione nesciunt sequi! Omnis quisquam quasi deleniti unde laboriosam voluptas quam ipsa sint sunt quod ipsum deserunt non id, laborum ipsam!</p>
-            </article>
-        </section>
-    </main>
--->
+        <div class="comparativa">
+            <h3>Comparativa</h3>
+            <div id="comparativa-content"></div>
+        </div>
 
+        <div class="selector">
+            <h3>Selección Derecha</h3>
+            <select id="seleccion-derecha" onchange="updatePlayer('derecha')">
+                <option value="">Seleccione una selección</option>
+                <option value="1">Argentina</option>
+                <option value="2">Brasil</option>
+                <option value="3">Chile</option>
+            </select>
+            <div id="jugador-derecha"></div>
+        </div>
+    </section>
 
-<section class="contenedor">
-    <div class="selector">
-        <h3>Selección Izquierda</h3>
-        <select id="seleccion-izquierda" onchange="updatePlayer('izquierda')">
-            <option value="">Seleccione una selección</option>
-            <option value="1">Argentina</option>
-            <option value="2">Brasil</option>
-            <option value="3">Chile</option>
-        </select>
-        <div id="jugador-izquierda"></div>
-    </div>
+    <script>
+        const players = {
+            1: { name: 'Lionel Messi', card: '<div class="card"><h4>Lionel Messi</h4><p>Detalles de Messi...</p></div>' },
+            2: { name: 'Neymar Jr', card: '<div class="card"><h4>Neymar Jr</h4><p>Detalles de Neymar...</p></div>' },
+            3: { name: 'Arturo Vidal', card: '<div class="card"><h4>Arturo Vidal</h4><p>Detalles de Vidal...</p></div>' }
+        };
 
-    <div class="comparativa">
-        <h3>Comparativa</h3>
-        <div id="comparativa-content"></div>
-    </div>
-
-    <div class="selector">
-        <h3>Selección Derecha</h3>
-        <select id="seleccion-derecha" onchange="updatePlayer('derecha')">
-            <option value="">Seleccione una selección</option>
-            <option value="1">Argentina</option>
-            <option value="2">Brasil</option>
-            <option value="3">Chile</option>
-        </select>
-        <div id="jugador-derecha"></div>
-    </div>
-</section>
-
-<script>
         function updatePlayer(side) {
-            var seleccionId = $('#seleccion-' + side).val();
+            var seleccionId = document.getElementById('seleccion-' + side).value;
             if (seleccionId) {
-                // Simular la obtención del jugador estrella
-                var jugador = seleccionId == 1 ? 'Lionel Messi' : (seleccionId == 2 ? 'Neymar Jr' : 'Arturo Vidal');
-                $('#jugador-' + side).text(jugador);
+                var jugador = players[seleccionId];
+                document.getElementById('jugador-' + side).innerHTML = jugador.card;
                 updateComparativa();
             }
         }
 
         function updateComparativa() {
-            var jugadorIzquierda = $('#jugador-izquierda').text();
-            var jugadorDerecha = $('#jugador-derecha').text();
+            var jugadorIzquierda = document.getElementById('jugador-izquierda').innerHTML;
+            var jugadorDerecha = document.getElementById('jugador-derecha').innerHTML;
             if (jugadorIzquierda && jugadorDerecha) {
-                $('#comparativa-content').text('Comparativa entre ' + jugadorIzquierda + ' y ' + jugadorDerecha);
+                document.getElementById('comparativa-content').innerHTML = 'Comparativa entre los jugadores seleccionados.';
             }
         }
     </script>
-</body>
-</html>
 </body>
 </html>

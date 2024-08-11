@@ -15,23 +15,23 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index ():
-    return "Hola Mundo"
+    return render_template('/index.html')
 
 @app.route('/estadisticas')
 def estadisticas():
-    return "estadisticas"
+    return render_template('estadisticas.html')
 
 @app.route('/jugadores')
 def jugadores():
-    return "jugadores"
+    return render_template('jugadores.html')
 
 @app.route('/login')
 def loguin():
-    return "login"
+    return render_template('login.html')
 
 @app.route('/selecciones')
 def selecciones():
-    return "selecciones"
+    return render_template('selecciones')
 
 
 

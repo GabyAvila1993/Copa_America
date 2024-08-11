@@ -29,12 +29,13 @@
 html{
     font-family: 'Poppins', sans-serif;
     /* font-size: 15px; */
-    background-color: rgba(250, 246, 246, 0.897);
+    background-color: #073181;
+    color: #fff;
 }
 
 .inicio_fijo{
     background-color: #073181;
-    color: black;
+    color:#fff;
     width: 100%;
     height: 100px;
     padding: 5px;
@@ -86,6 +87,7 @@ body {
     margin: 5px;
     padding: 20px;
     text-align: justify;
+    color:#fff;
 }
 
 .encabezado{
@@ -93,4 +95,130 @@ body {
     margin: 5px;
     padding: 10px;
     height: 100%;
+}
+
+
+/* ------------------- */
+/* ESTILOS PARA GRUPO */
+/* ------------------- */
+
+.titulo{
+    display: flex;
+    color: #fff;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 10px  #fff;
+    padding: 3px;
+    margin: 3px;
+    width: 200px
+}
+.grupos {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta el número de columnas automáticamente */
+    gap: 20px;
+    padding: 20px;
+}
+
+.grupos h2 {
+    text-align: center;
+    color: #fff;
+    background-color: #073181;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.grupo {
+    font-size: 24px;
+    border: 2px solid white;
+    background-color: #073181;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.grupo h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.lista-grupo {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-grupo li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.lista-grupo li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 0;
+}
+
+.partidos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* Reducido el espacio entre las fechas */
+    align-content: flex-start; /* Alineación ajustada */
+}
+
+.fecha {
+    background-color: #fff;
+    color: #073181;
+    border-radius: 10px;
+    padding: 5px; /* Reducido el padding */
+}
+
+.fecha h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; /* Reducido el tamaño de la fuente */
+    margin-bottom: 5px; /* Reducido el margen inferior */
+    text-align: center;
+}
+
+.partido {
+    margin-bottom: 8px; /* Reducido el margen inferior */
+}
+
+.partido .fecha {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px; /* Reducido el tamaño de la fuente */
+    text-align: center;
+    background-color: #073181;
+    color: #fff;
+    border-radius: 5px;
+    padding: 3px; /* Reducido el padding */
+    margin-bottom: 3px; /* Reducido el margen inferior */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px; /* Establecido una altura fija */
+}
+
+.partido-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px; /* Reducido el padding */
+    background-color: #073181;
+    color: #fff;
+    border-radius: 10px;
+    list-style-type: none;
+    height: 30px; /* Reducido el tamaño */
+}
+
+.partido-item img {
+    height: 20px; /* Reducido el tamaño de las imágenes */
+    width: 20px;
 }
