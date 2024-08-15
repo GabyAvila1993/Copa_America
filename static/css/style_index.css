@@ -10,12 +10,12 @@
 
 @font-face{
     font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto/Roboto-Italic.ttf');
+    src: url('/static/Roboto/Roboto-Italic.ttf');
 }
 
 @font-face{
     font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins/Poppins-MediumItalic.ttf');
+    src: url('/static/Poppins/Poppins-MediumItalic.ttf');
 }
 
 /* Reset de CSS */

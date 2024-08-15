@@ -1,77 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jugadores</title>
-    <link rel="stylesheet" href="../static/css/style_jugadores.css">
+    <title>Información del Jugador</title>
+    <style>
+        .jugador-container {
+            width: 300px;
+            margin: auto;
+            border: 1px solid #000;
+            padding: 20px;
+            text-align: center;
+        }
+        .jugador-foto {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .jugador-nombre {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .jugador-detalle {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
-    <section class="inicio_fijo">
-        <img src="../assets/image/Logo recortado.png" alt="">
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="../templates/index.html">Inicio</a></li>
-                <li><a href="../templates/estadisticas.html">Estadisticas</a></li>
-                <li><a href="../templates/jugadores.html">Jugadores</a></li>
-                <li><a href="../templates/login.html">Login</a></li>
-                <li><a href="../templates/selecciones.html">Selecciones</a></li>
-            </ul>
-        </nav>
-    </section>
-
-    <section class="contenedor">
-        <div class="selector">
-            <h3>Selección Izquierda</h3>
-            <select id="seleccion-izquierda" onchange="updatePlayer('izquierda')">
-                <option value="">Seleccione una selección</option>
-                <option value="1">Argentina</option>
-                <option value="2">Brasil</option>
-                <option value="3">Chile</option>
-            </select>
-            <div id="jugador-izquierda"></div>
+    <div class="jugador-container">
+        <div class="jugador-foto">
+            <!-- Aquí iría la foto del jugador -->
+            Foto
         </div>
-
-        <div class="comparativa">
-            <h3>Comparativa</h3>
-            <div id="comparativa-content"></div>
-        </div>
-
-        <div class="selector">
-            <h3>Selección Derecha</h3>
-            <select id="seleccion-derecha" onchange="updatePlayer('derecha')">
-                <option value="">Seleccione una selección</option>
-                <option value="1">Argentina</option>
-                <option value="2">Brasil</option>
-                <option value="3">Chile</option>
-            </select>
-            <div id="jugador-derecha"></div>
-        </div>
-    </section>
-
-    <script>
-        const players = {
-            1: { name: 'Lionel Messi', card: '<div class="card"><h4>Lionel Messi</h4><p>Detalles de Messi...</p></div>' },
-            2: { name: 'Neymar Jr', card: '<div class="card"><h4>Neymar Jr</h4><p>Detalles de Neymar...</p></div>' },
-            3: { name: 'Arturo Vidal', card: '<div class="card"><h4>Arturo Vidal</h4><p>Detalles de Vidal...</p></div>' }
-        };
-
-        function updatePlayer(side) {
-            var seleccionId = document.getElementById('seleccion-' + side).value;
-            if (seleccionId) {
-                var jugador = players[seleccionId];
-                document.getElementById('jugador-' + side).innerHTML = jugador.card;
-                updateComparativa();
-            }
-        }
-
-        function updateComparativa() {
-            var jugadorIzquierda = document.getElementById('jugador-izquierda').innerHTML;
-            var jugadorDerecha = document.getElementById('jugador-derecha').innerHTML;
-            if (jugadorIzquierda && jugadorDerecha) {
-                document.getElementById('comparativa-content').innerHTML = 'Comparativa entre los jugadores seleccionados.';
-            }
-        }
-    </script>
+        <div class="jugador-nombre">{{ jugadores.nombre }} {{ jugadores.apellido }}</div>
+        <div class="jugador-detalle">Edad: {{ jugadores.edad }}</div>
+        <div class="jugador-detalle">Club actual: {{ jugadores.club_actual }}</div>
+        <div class="jugador-detalle">Clubes anteriores: {{ jugadores.club_por_los_que_paso }}</div>
+        <div class="jugador-detalle">Tarjetas rojas: {{ jugadores.tarjetas_rojas }}</div>
+        <div class="jugador-detalle">Tarjetas amarillas: {{ jugadores.tarjetas_amarillas }}</div>
+    </div>
 </body>
 </html>
