@@ -10,14 +10,14 @@
 
 <body>
     <section class="inicio_fijo">
-        <img src="../assets/image/Logo recortado.png" alt="">
+        <img src="../static/image/Logo recortado.png" alt="">
         <nav class="nav">
             <ul class="nav-list">
-                <li><a href="../templates/index.html">Inicio</a></li>
-                <li><a href="../templates/estadisticas.html">Estadisticas</a></li>
-                <li><a href="../templates/jugadores.html">Jugadores</a></li>
-                <li><a href="../templates/login.html">Login</a></li>
-                <li><a href="../templates/selecciones.html">Selecciones</a></li>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
+                <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
             </ul>
         </nav>
     </section>
