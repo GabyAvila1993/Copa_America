@@ -1,96 +1,114 @@
-from flask import Flask, render_template, request, jsonify
-import mysql.connector
+from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from flask_mysqldb import MySQL
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
-# Configuración de la conexión a la base de datos MySQL
-def conectar_bd():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="copa_america"
-    )
+# Configuración de la base de datos MySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'copa_america'
 
-# Ruta principal para renderizar la página de jugadores con detalles generales
+mysql = MySQL(app)
+
+# Ruta principal para renderizar la página de inicio
 @app.route('/')
 def index():
-    conn = conectar_bd()
-    cursor = conn.cursor()
+    return render_template('index.html')
 
-    # Obtener todos los jugadores con detalles generales
+# Ruta para mostrar todos los jugadores con detalles generales
+@app.route('/jugadores')
+def jugadores():
+    cursor = mysql.connection.cursor()
     cursor.execute("SELECT nombre, apellido, nacionalidad, peso, altura FROM jugadores")
     jugadores = cursor.fetchall()
+    cursor.close()
 
-    conn.close()
     return render_template('jugadores.html', jugadores=jugadores)
 
-# Ruta para obtener jugadores de una selección (si quieres seguir utilizando esto en otro contexto)
-@app.route('/jugadores', methods=['GET'])
-def obtener_jugadores():
+# Ruta para obtener jugadores de una selección específica
+@app.route('/jugadores/seleccion', methods=['GET'])
+def obtener_jugadores_por_seleccion():
     seleccion = request.args.get('seleccion')
-
-    conn = conectar_bd()
-    cursor = conn.cursor()
+    cursor = mysql.connection.cursor()
 
     cursor.execute("SELECT nombre, apellido FROM jugadores WHERE nacionalidad = %s", (seleccion,))
     jugadores = [{"nombre": f"{fila[0]} {fila[1]}"} for fila in cursor.fetchall()]
+    cursor.close()
 
-    conn.close()
     return jsonify(jugadores)
 
 # Ruta para obtener y mostrar estadísticas de un jugador específico
 @app.route('/estadisticas', methods=['GET'])
-def obtener_estadisticas():
+def estadisticas():
     nombre_completo = request.args.get('jugador')
-    nombre, apellido = nombre_completo.split()
+    
+    if not nombre_completo:
+        # Si no se proporciona el nombre del jugador, muestra un mensaje o redirige a otra página
+        return render_template('estadisticas.html', error="No se proporcionó un jugador. Selecciona uno para ver sus estadísticas.")
 
-    conn = conectar_bd()
-    cursor = conn.cursor()
+    try:
+        nombre, apellido = nombre_completo.split()
+    except ValueError:
+        return render_template('estadisticas.html', error="El formato del nombre es incorrecto.")
 
+    cursor = mysql.connection.cursor()
     cursor.execute("SELECT * FROM estadisticas WHERE nombre = %s AND apellido = %s", (nombre, apellido))
     stats = cursor.fetchone()
+    cursor.close()
 
-    conn.close()
+    if stats:
+        estadisticas={
+            "velocidad": stats[4],
+            "aceleracion": stats[5],
+            "definicion": stats[6],
+            "posicion_ataque": stats[7],
+            "potencia": stats[8],
+            "tiros_lejanos": stats[9],
+            "penaltis": stats[10],
+            "voleas": stats[11],
+            "vision": stats[12],
+            "centros": stats[13],
+            "precision_faltas": stats[14],
+            "pases_largos": stats[15],
+            "pases_cortos": stats[16],
+            "efecto": stats[17],
+            "agilidad": stats[18],
+            "equilibrio": stats[19],
+            "reflejo": stats[20],
+            "compostura": stats[21],
+            "control_de_balon": stats[22],
+            "regates": stats[11],
+            "intercepciones": stats[23],
+            "presición_de_cabeza": stats[24],
+            "conciencia_defensiva": stats[25],
+            "robo": stats[26],
+            "entrada_agresiva": stats[27],
+            "salto": stats[28],
+            "resistencia": stats[29],
+            "fuerza": stats[30],
+            "agresividad": stats[31],
+            "estirada": stats[32],
+            "paradas": stats[33],
+            "saques": stats[34],
+            "colocación": stats[35],
+            "reflejos": stats[36],
+        }
+        return jsonify(estadisticas)
+    else:
+        return render_template('estadisticas.html', error="No se encontraron estadísticas para el jugador especificado.")
 
-    estadisticas = {
-        "velocidad": stats[4],
-        "aceleracion": stats[5],
-        "definicion": stats[6],
-        "posicion_ataque": stats[7],
-        "potencia": stats[8],
-        "tiros_lejanos": stats[9],
-        "penaltis": stats[10],
-        "voleas": stats[11],
-        "vision": stats[12],
-        "centros": stats[13],
-        "precision_faltas": stats[14],
-        "pases_largos": stats[15],
-        "pases_cortos": stats[16],
-        "efecto": stats[17],
-        "agilidad": stats[18],
-        "equilibrio": stats[19],
-        "reflejo": stats[20],
-        "compostura": stats[21],
-        "control_de_balon": stats[22],
-        "regates": stats[11],
-        "intercepciones": stats[23],
-        "presición_de_cabeza": stats[24],
-        "conciencia_defensiva": stats[25],
-        "robo": stats[26],
-        "entrada_agresiva": stats[27],
-        "salto": stats[28],
-        "resistencia": stats[29],
-        "fuerza": stats[30],
-        "agresividad": stats[31],
-        "estirada": stats[32],
-        "paradas": stats[33],
-        "saques": stats[34],
-        "colocación": stats[35],
-        "reflejos": stats[36],
-    }
+# Ruta para la página de login
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
-    return jsonify(estadisticas)
+# Ruta para la página de selecciones
+@app.route('/selecciones')
+def selecciones():
+    return render_template('selecciones.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=3000,debug=True)

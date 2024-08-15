@@ -19,7 +19,7 @@
 html{
     font-family: 'Poppins', sans-serif;
     /* font-size: 15px; */
-    background-color: #6b6b77;
+    background-color: #073181;
 }
 
 .inicio_fijo{
@@ -69,41 +69,56 @@ html{
 /* Copiar todo lo que está arriba de esto para que quede fijo el mismo banner */
 /* ------------------------------------------------------------------------------- */
 
-body{
-    padding-top: 160px;
-}
-
-main{
+/* CSS PARA TABLAS */
+body {
+    margin-top: 100px;
+    font-family: 'Poppins';
+    background-color: #073181;
+    color: #fff;
     text-align: center;
 }
 
-main section{
-    display: inline-block;
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.menu {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#comparacion {
+    margin-top: 40px;
+}
+
+#tabla-comparacion {
     width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-
-.contenedor{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin: 5px;
-    justify-content: space-evenly;
-    height: 100vh;
-}
-.card-contenedor{
-    padding: 10px;
-    margin: 10px;
-    background-color: black;
-    color: white;
-    width: 300px;
-    height: 350px;
-    border: 4px solid #073181;
-    border-radius: 10%;
+/* Interior tabla */
+#tabla-comparacion th,
+#tabla-comparacion td {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
 }
 
-
-.card-contenedor img{
-    width: 90%;
+/* Modificar nombre de jugadores en la tabla */
+#tabla-comparacion th {
+    background-color: #111;
+    color: #ddd;
+    font-weight: bold;
 }
 
+#tabla-comparacion td > div {
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 20px;
+}
