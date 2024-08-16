@@ -13,14 +13,9 @@
             padding: 20px;
             text-align: center;
         }
-        .jugador-foto {
+        .jugador-foto img {
             width: 100px;
             height: 100px;
-            background-color: #ccc;
-            margin: 10px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .jugador-nombre {
             background-color: #073181;
@@ -37,41 +32,68 @@
 
     {% extends "layout.html" %}
 
-    {% block title %}Inicio{% endblock %}
+    {% block title %}Jugadores{% endblock %}
 
     {% block content %}
 
-    <!-- <section class="inicio_fijo">
+    <section class="inicio_fijo">
         <img src="../static/image/Logo recortado.png" alt="">
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
                 <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
             </ul>
         </nav>
-    </section> -->
+    </section>
 
     <section class="contenedor">
-        <div class="selector">
-            <h3>Selección Izquierda</h3>
-            <select id="seleccion-izquierda" onchange="updatePlayer('izquierda')">
-                <option value="">Seleccione una selección</option>
-                <option value="1">Argentina</option>
-                <option value="2">Brasil</option>
-                <option value="3">Chile</option>
-            </select>
-            <div id="jugador-izquierda"></div>
-        </div>
-        <div class="jugador-nombre">{{ jugadores.nombre }} {{ jugadores.apellido }}</div>
-        <div class="jugador-detalle">Edad: {{ jugadores.edad }}</div>
-        <div class="jugador-detalle">Club actual: {{ jugadores.club_actual }}</div>
-        <div class="jugador-detalle">Clubes anteriores: {{ jugadores.club_por_los_que_paso }}</div>
-        <div class="jugador-detalle">Tarjetas rojas: {{ jugadores.tarjetas_rojas }}</div>
-        <div class="jugador-detalle">Tarjetas amarillas: {{ jugadores.tarjetas_amarillas }}</div>
-    </div>
+        <!-- Formulario de selección -->
+        <form method="POST">
+            <!-- Selección del país -->
+            <div class="selector">
+                <h3>Seleccionar País</h3>
+                <select name="country" onchange="this.form.submit()">
+                    <option value="">Seleccione un país</option>
+                    {% for seleccion in selecciones %}
+                        <option value="{{ seleccion }}" {% if seleccion == request.form.get('country') %}selected{% endif %}>{{ seleccion }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Selección del jugador (si se seleccionó un país) -->
+            {% if jugadores %}
+                <div class="selector">
+                    <h3>Seleccionar Jugador</h3>
+                    <select name="player_id" onchange="this.form.submit()">
+                        <option value="">Seleccione un jugador</option>
+                        {% for jugador in jugadores %}
+                            <option value="{{ jugador[0] }}" {% if jugador[0] == request.form.get('player_id') %}selected{% endif %}>{{ jugador[1] }} {{ jugador[2] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
+        </form>
+
+        <!-- Mostrar información del jugador (si se seleccionó un jugador) -->
+        {% if jugador_info %}
+            <div class="jugador-container">
+                <div class="jugador-foto">
+                    <img src="{{ url_for('static', filename='image/' ~ jugador_info[7]) }}" alt="Foto del jugador">
+                </div>
+                <div class="jugador-nombre">{{ jugador_info[0] }} {{ jugador_info[1] }}</div>
+                <div class="jugador-detalle">Edad: {{ jugador_info[2] }}</div>
+                <div class="jugador-detalle">Club actual: {{ jugador_info[3] }}</div>
+                <div class="jugador-detalle">Clubes anteriores: {{ jugador_info[4] }}</div>
+                <div class="jugador-detalle">Tarjetas rojas: {{ jugador_info[5] }}</div>
+                <div class="jugador-detalle">Tarjetas amarillas: {{ jugador_info[6] }}</div>
+            </div>
+        {% endif %}
+    </section>
+
     {% endblock %}
+
 </body>
 </html>

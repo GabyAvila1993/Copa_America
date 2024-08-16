@@ -19,14 +19,33 @@ def index():
     return render_template('index.html')
 
 # Ruta para mostrar todos los jugadores con detalles generales
-@app.route('/jugadores')
+@app.route('/jugadores', methods=['GET', 'POST'])
 def jugadores():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT nombre, apellido, nacionalidad, peso, altura FROM jugadores")
-    jugadores = cursor.fetchall()
-    cursor.close()
 
-    return render_template('jugadores.html', jugadores=jugadores)
+    # Obtener selecciones (países) desde la base de datos
+    cursor.execute("SELECT DISTINCT nacionalidad FROM jugadores")
+    selecciones = [row[0] for row in cursor.fetchall()]
+
+    jugadores = []
+    jugador_info = None
+    seleccion = request.form.get('country')  # Obtener el país seleccionado del formulario
+    jugador_id = request.form.get('player_id')
+
+    if seleccion:
+        cursor.execute("SELECT id, nombre, apellido FROM jugadores WHERE nacionalidad = %s", (seleccion,))
+        jugadores = cursor.fetchall()
+
+    if jugador_id:
+        cursor.execute("""
+            SELECT nombre, apellido, edad, equipo_actual, historial_equipos, 
+                   tarjetas_rojas, tarjetas_amarillas, imagen 
+            FROM jugadores WHERE id = %s
+        """, (jugador_id,))
+        jugador_info = cursor.fetchone()
+
+    cursor.close()
+    return render_template('jugadores.html', selecciones=selecciones, jugadores=jugadores, jugador_info=jugador_info, seleccion=seleccion, jugador_id=jugador_id)
 
 # Ruta para obtener jugadores de una selección específica
 @app.route('/jugadores/seleccion', methods=['GET'])
