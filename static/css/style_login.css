@@ -1,13 +1,14 @@
 @font-face{
     font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto/Roboto-Italic.ttf');
+    src: url('/static/Roboto/Roboto-Italic.ttf');
 }
 
 @font-face{
     font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins/Poppins-MediumItalic.ttf');
+    src: url('/static/Poppins/Poppins-MediumItalic.ttf');
 }
 
+/* Reset de CSS */
 /* Reset de CSS */
 *{
     padding: 0;
@@ -18,16 +19,17 @@
 /* Fuente general */
 html{
     font-family: 'Poppins', sans-serif;
-    /* font-size: 15px; */
-    background-color: rgba(250, 246, 246, 0.897);
+    background-color: #073181;
 }
+
+/* Sección de inicio fijo */
 .inicio_fijo{
     background-color: #073181;
     color: black;
     width: 100%;
     height: 100px;
     padding: 5px;
-    margin: 0; /* Cambiamos el margin a 0 para eliminar cualquier espacio no deseado */
+    margin: 0;
     border: 3px solid #e80c0d;
     display: flex;
     align-items: center;
@@ -35,7 +37,7 @@ html{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Nos aseguramos que inicio_fijo quede arriba permanentemente */
+    z-index: 1000;
 }
 
 .inicio_fijo img {
@@ -66,124 +68,54 @@ html{
     background-color: black; 
 }
 
-.error {
-    color: red;
-    margin-bottom: 10%;
-}
-
-.info {
-    color: blue;
-    margin-bottom: 10%;
-}
-
-.message {
-    margin-bottom: 10%;
-    color: red;
-}
-
-/* Estilos generales del formulario (mantener los estilos existentes) */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-color: rgb(165, 165, 165);
-    height: 120vh;
+/* Sección de noticias */
+.news-section {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: 120px; /* Espaciado desde el inicio fijo */
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
-}
-
-.formulario {
-    background: white;
+.card {
+    background-color: #001988;
+    border: 3px solid #ff0000;
     border-radius: 10px;
-    box-shadow: 0px 5px 10px black;
-    padding: 50px;
-    box-sizing: border-box;
-}
-
-.formulario h1 {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.formulario form {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-group {
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.input-group label {
-    position: absolute;
-    top: -20px;
-    left: 0px;
-    background: white;
-    padding: 0 5px;
-    font-size: 14px;
-    color: #999;
-}
-
-.remember-me {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.remember-me input {
-    margin-right: 10px;
-}
-
-.remember-me label {
-    font-size: 14px;
-    color: #555;
-}
-
-input[type="submit"] {
-    width: 100%;
-    height: 50px;
-    border: none;
-    background: #218FF2;
-    border-radius: 25px;
-    font-size: 18px;
     color: white;
-    cursor: pointer;
-    outline: none;
-    margin: 10px 0;
 }
 
-input[type="submit"]:hover {
-    background-color: #1A6FD2;
-    transition: .5s;
+.card-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
-.forgot-password {
-    text-align: center;
-    margin-top: 10px;
+.card-content h3 {
+    background-color: #073181;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-.forgot-password a {
-    color: blue;
-    text-decoration: none;
+.card-content p {
     font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.forgot-password a:hover {
-    text-decoration: underline;
+.btn-ver-mas {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e80c0d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-ver-mas:hover {
+    background-color: black;
 }

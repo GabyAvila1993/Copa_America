@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicia Sesión</title>
+    <title>Noticias</title>
     <link rel="stylesheet" href="../static/css/style_login.css">
 </head>
 
@@ -16,45 +16,54 @@
                 <li><a href="{{ url_for('index') }}">Inicio</a></li>
                 <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
                 <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('login') }}">Noticias</a></li>
                 <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
             </ul>
         </nav>
     </section>
-    <div class="container">
-        <div class="formulario">
-            <h1>Inicia Sesión</h1>
 
-            <!-- Mostrar mensajes flash -->
-            <!-- {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            <ul>
-                {% for category, message in messages %}
-                <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            {% endwith %} -->
-            
-
-            <form action="/login" method="POST">
-                <div class="input-group">
-                    <input type="text" id="username" name="username" required>
-                    <label for="username">Nombre de Usuario</label>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" name="password" required>
-                    <label for="password">Contraseña</label>
-                </div>
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Recuérdame</label>
-                </div>
-                <input type="submit" value="Iniciar">
-                <div class="forgot-password"><a href="#">¿Olvidaste tu Contraseña?</a></div>
-            </form>
+    <!-- Sección de noticias con 4 cuadros -->
+    <section class="news-section">
+        <div class="card">
+            <img src="/static/image/image1.jpg" alt="Imagen 1" class="card-img">
+            <div class="card-content">
+                <h3>El equipo ideal de la CONMEBOL Copa América 2024™</h3>
+                <p>Son cinco argentinos, dos colombianos, un ecuatoriano, un canadiense, un uruguayo y un brasileño.
+                    Fue la 48° edicion del torneo.
+                    La CONMEBOL Copa América 2024™ fue un torneo inolvidable: 32 partidos, entre el 20 de junio y el 14 de julio, que terminaron con Argentina ganando su 16° título en el certamen.</p>
+                <a href="https://copaamerica.com/es/novedades/equipo-ideal-torneo-copa-america-2024" class="btn-ver-mas">Ver más</a>
+            </div>
         </div>
-    </div>
-</body>
 
+        <div class="card">
+            <img src="/static/image/image2.jpg" alt="Imagen 2" class="card-img">
+            <div class="card-content">
+                <h3>El máximo goleador de la CONMEBOL Copa América™</h3>
+                <p>El argentino Lautaro Martínez fue el último goleador, con 5 tantos.
+                    Se lleva registro desde la primera edición del torneo, hace más de un siglo.</p>
+                <a href="https://copaamerica.com/es/novedades/maximo-goleador-todas-ediciones-conmebol-copa-america" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/static/image/image3.jpg" alt="Imagen 3" class="card-img">
+            <div class="card-content">
+                <h3>Argentina venció a Colombia y es el campeón de la CONMEBOL Copa América™</h3>
+                <p>Argentina logró su 16° título en el certamen, convirtiéndose en el máximo campeón.
+                    Scaloni logró su cuarto título como entrenador de Argentina.</p>
+                <a href="https://copaamerica.com/es/novedades/argentina-campeon-colombia-copa-america-lautaro-martinez" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/static/image/image4.jpg" alt="Imagen 4" class="card-img">
+            <div class="card-content">
+                <h3>Todos los campeones de la CONMEBOL Copa América™ en la historia</h3>
+                <p>Argentina y Colombia están en la lista de campeones en la historia del torneo.
+                    Mira quiénes fueron los campeones a lo largo de 108 años de competencia.</p>
+                <a href="https://copaamerica.com/es/novedades/todos-los-campeones-de-la-conmebol-copa-america" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+    </section>
+</body>
 </html>
