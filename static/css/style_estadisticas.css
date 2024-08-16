@@ -18,7 +18,6 @@
 /* Fuente general */
 html{
     font-family: 'Poppins', sans-serif;
-    /* font-size: 15px; */
     background-color: rgba(250, 246, 246, 0.897);
 }
 
@@ -28,7 +27,7 @@ html{
     width: 100%;
     height: 100px;
     padding: 5px;
-    margin: 0; /* Cambiamos el margin a 0 para eliminar cualquier espacio no deseado */
+    margin: 0;
     border: 3px solid #e80c0d;
     display: flex;
     align-items: center;
@@ -36,7 +35,7 @@ html{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Nos aseguramos que inicio_fijo quede arriba permanentemente */
+    z-index: 1000;
 }
 
 .inicio_fijo img {
@@ -57,19 +56,23 @@ html{
 
 .nav-list li a {
     text-decoration: none;
-    color: white; 
+    color: white;
     padding: 10px;
-    background-color: #e80c0d; 
+    background-color: #e80c0d;
     border-radius: 60px;
 }
 
 .nav-list li a:hover {
-    background-color: black; 
+    background-color: black;
 }
 
-/* Agregamos un padding top para evitarnos que el contenido quede oculto por la clase inicio_fijo */
 body {
     padding-top: 160px; 
+    margin-top: 100px;
+    font-family: 'Poppins';
+    background-color: #073181;
+    color: #fff;
+    text-align: center;
 }
 
 .contenido{
@@ -78,23 +81,64 @@ body {
     text-align: justify;
 }
 
-/* CSS PARA TABLAS */
-body {
-    margin-top: 100px;
-    font-family: 'Poppins';
-    background-color: #073181;
-    color: #fff;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
 }
-
-.container {
-    width: 80%;
-    margin: 20px auto;
+.container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.titulo {
+    font-family: 'Poppins';
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+.titulo h2 {
+    font-size: 24px;
+    color: #fff;
+    margin: 0;
+}
+
+
+
 .menu {
-    display: block;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #073181;
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    
+}
+
+.menu label {
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.menu select {
+    width: auto;
+    padding: 5px;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #001988;
+}
+
+.menu select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 #comparacion {
@@ -107,7 +151,6 @@ body {
     margin-top: 20px;
 }
 
-/* Interior tabla */
 #tabla-comparacion th,
 #tabla-comparacion td {
     background-color: #111;
@@ -118,7 +161,6 @@ body {
     vertical-align: middle;
 }
 
-/* Modificar nombre de jugadores en la tabla */
 #tabla-comparacion th {
     background-color: #111;
     color: #ddd;
@@ -129,5 +171,5 @@ body {
     height: 20px;
     border-radius: 4px;
     text-align: center;
-    line-height: 20px;
+    line-height: 20px;
 }

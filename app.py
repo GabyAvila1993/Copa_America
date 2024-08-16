@@ -40,7 +40,7 @@ def jugadores():
     if jugador_id:
         cursor.execute("""
             SELECT nombre, apellido, edad, equipo_actual, historial_equipos, 
-                   tarjetas_rojas, tarjetas_amarillas, imagen 
+                   tarjetas_rojas, tarjetas_amarillas, imagen, altura, peso, goles_totales, asistencias_totales, partidos_totales, lesiones_recientes, redes_sociales, pie_dominante, fecha_nacimiento
             FROM jugadores WHERE id = %s
         """, (jugador_id,))
         jugador_info = cursor.fetchone()
@@ -131,10 +131,30 @@ def estadisticas():
 def login():
     return render_template('login.html')
 
-# Ruta para la página de selecciones
-@app.route('/selecciones')
+@app.route('/selecciones', methods=['GET', 'POST'])
 def selecciones():
-    return render_template('selecciones.html')
+    cursor = mysql.connection.cursor()
+
+    # Obtener los países desde la base de datos
+    cursor.execute("SELECT DISTINCT Pais FROM equipos")
+    selecciones = [row[0] for row in cursor.fetchall()]
+
+    equipo_info = None
+    seleccion = request.form.get('country')
+
+    if seleccion:
+        cursor.execute("""
+            SELECT Nombre_Completo, Pais, CiudadO, Estadio, Capacidad, Entrenador, 
+                   AñoF, Colores, Liga, Posicion, PartidoJ, PartidoG, PartidoP, PartidoE, 
+                   PaginaWeb, Logo 
+            FROM equipos 
+            WHERE Pais = %s
+        """, (seleccion,))
+        equipo_info = cursor.fetchone()
+
+    cursor.close()
+    return render_template('selecciones.html', selecciones=selecciones, equipo_info=equipo_info)
+
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

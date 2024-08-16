@@ -1,23 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial</title>
-    <link rel="stylesheet" href="../static/css/style_selecciones.css">
+    <title>Información del Equipo</title>
+    <link rel="stylesheet" href="../static/css/style_jugadores.css">
 </head>
 <body>
+
+    {% extends "layout.html" %}
+
+    {% block title %}Selecciones{% endblock %}
+
+    {% block content %}
+
     <section class="inicio_fijo">
         <img src="../static/image/Logo recortado.png" alt="">
         <nav class="nav">
             <ul class="nav-list">
                 <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
                 <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
             </ul>
         </nav>
     </section>
+
+    <section class="contenedor">
+        <!-- Formulario de selección -->
+        <form method="POST">
+            <div class="selector-container">
+                <!-- Selección del país -->
+                <div class="selector">
+                    <h3>Seleccionar País</h3>
+                    <select name="country" onchange="this.form.submit()">
+                        <option value="">Seleccione un país</option>
+                        {% for seleccion in selecciones %}
+                            <option value="{{ seleccion }}" {% if seleccion == request.form.get('country') %}selected{% endif %}>{{ seleccion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <!-- Mostrar información del equipo (si se seleccionó un país) -->
+        {% if equipo_info %}
+            <div class="jugador-container"> <!-- Usamos la misma clase para mantener el estilo -->
+                <div class="jugador-foto">
+                    <img src="{{ url_for('static', filename='image/' ~ equipo_info[15]) }}" alt="Logo del equipo">
+
+                </div>
+                <div class="jugador-nombre">{{ equipo_info[0] }}</div> <!-- Nombre del equipo -->
+                <div class="jugador-detalle">País: {{ equipo_info[1] }}</div>
+                <div class="jugador-detalle">Ciudad: {{ equipo_info[2] }}</div>
+                <div class="jugador-detalle">Estadio: {{ equipo_info[3] }}</div>
+                <div class="jugador-detalle">Capacidad: {{ equipo_info[4] }}</div>
+                <div class="jugador-detalle">Entrenador: {{ equipo_info[5] }}</div>
+                <div class="jugador-detalle">Año de Fundación: {{ equipo_info[6] }}</div>
+                <div class="jugador-detalle">Colores: {{ equipo_info[7] }}</div>
+                <div class="jugador-detalle">Liga: {{ equipo_info[8] }}</div>
+                <div class="jugador-detalle">Posición: {{ equipo_info[9] }}</div>
+                <div class="jugador-detalle">Partidos Jugados: {{ equipo_info[10] }}</div>
+                <div class="jugador-detalle">Partidos Ganados: {{ equipo_info[11] }}</div>
+                <div class="jugador-detalle">Partidos Perdidos: {{ equipo_info[12] }}</div>
+                <div class="jugador-detalle">Partidos Empatados: {{ equipo_info[13] }}</div>
+                <div class="jugador-detalle">Página Web: 
+                    <a href="{{ equipo_info[14] }}" style="color: #ff0000;" target="_blank">{{ equipo_info[14] }}</a>
+                </div>
+                
+            </div>
+        {% endif %}
+    </section>
+
+    {% endblock %}
+
 </body>
 </html>

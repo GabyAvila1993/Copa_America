@@ -252,3 +252,40 @@ body {
 .inicio_fijo {
     transition: top 0.3s ease-in-out;
 }
+
+.enfrentamientos-section {
+    text-align: center; /* Centra el texto y las imágenes */
+}
+
+.enfrentamientos {
+    font-size: 24px;
+    border: 2px solid white;
+    background-color: #073181;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro del artículo */
+}
+
+.bandera {
+    width: 80px; /* Ajusta el tamaño inicial de las imágenes */
+    height: auto;
+    margin: 0 10px; /* Añade margen horizontal entre las imágenes */
+    transition: transform 0.3s ease, width 0.3s ease; /* Añade transición para el ancho y la transformación */
+}
+
+.bandera:hover {
+    width: 100px; /* Ajusta el tamaño de la imagen en el hover */
+    transform: scale(1.2); /* Amplía la imagen en el hover */
+}
+
+
+.paises-enfrentamientos {
+    color:aqua
+}
+
+.fechas-enfrentamientos{
+    color:#e80c0d
+}
