@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify
 from flask_mysqldb import MySQL
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
@@ -86,25 +86,25 @@ def estadisticas():
             "reflejo": stats[20],
             "compostura": stats[21],
             "control_de_balon": stats[22],
-            "regates": stats[11],
-            "intercepciones": stats[23],
-            "presición_de_cabeza": stats[24],
-            "conciencia_defensiva": stats[25],
-            "robo": stats[26],
-            "entrada_agresiva": stats[27],
-            "salto": stats[28],
-            "resistencia": stats[29],
-            "fuerza": stats[30],
-            "agresividad": stats[31],
-            "estirada": stats[32],
-            "paradas": stats[33],
-            "saques": stats[34],
-            "colocación": stats[35],
-            "reflejos": stats[36],
+            "regates": stats[23],
+            "intercepciones": stats[24],
+            "presicion_de_cabeza": stats[25],
+            "conciencia_defensiva": stats[26],
+            "robo": stats[27],
+            "entrada_agresiva": stats[28],
+            "salto": stats[29],
+            "resistencia": stats[30],
+            "fuerza": stats[31],
+            "agresividad": stats[32],
+            "estirada": stats[33],
+            "paradas": stats[34],
+            "saques": stats[35],
+            "colocacion": stats[36],
+            "reflejos": stats[37],
         }
         return jsonify(estadisticas)
     else:
-        return render_template('estadisticas.html', error="No se encontraron estadísticas para el jugador especificado.")
+        return render_template('estadisticas.html', selecciones=selecciones, error="No se encontraron estadísticas para el jugador especificado.")
 
 # Ruta para la página de login
 @app.route('/login')
@@ -117,4 +117,4 @@ def selecciones():
     return render_template('selecciones.html')
 
 if __name__ == '__main__':
-    app.run(port=3000,debug=True)
+    app.run(port=3000, debug=True)
