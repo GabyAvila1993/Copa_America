@@ -22,6 +22,38 @@ html{
     background-color: #073181;
 }
 
+.selector-container {
+    display: flex; /* Usar flexbox para alinear los elementos en una fila */
+    justify-content: space-between; /* Espacio entre los selectores */
+    gap: 20px; /* Espacio entre los selectores */
+    margin: 20px auto; /* Espaciado alrededor del contenedor */
+    max-width: 700px; /* Ancho máximo para el contenedor */
+}
+
+.selector {
+    flex: 1; /* Cada selector ocupará un ancho igual */
+    background-color: #073181; /* Fondo azul oscuro */
+    border: 3px solid #ff0000; /* Borde rojo */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alineación centrada */
+}
+
+.selector select {
+    width: 100%; /* Ancho del selector ajustado al contenedor */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde por defecto */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #fff; /* Color del texto */
+    background-color: #001988; /* Fondo del select */
+}
+
+.selector select:focus {
+    outline: none; /* Sin borde al hacer foco */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra al hacer foco */
+}
+
 .inicio_fijo{
     background-color: #073181;
     color: black;
@@ -121,4 +153,46 @@ body {
     border-radius: 4px;
     text-align: center;
     line-height: 20px;
+}
+
+.jugador-container {
+    
+    width: 400px;
+    margin: auto;
+    border: 3px solid #ff0000; /* Borde rojo */
+    padding: 50px; /* Reducido el padding para que no se vea tan grande */
+    text-align: center;
+    background-color: #001988; /* Color de fondo gris claro, cámbialo según prefieras */
+    border-radius: 10px; /* Bordes redondeados opcional */
+}
+.jugador-foto img {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border-radius: 50%; /* Bordes redondeados para la imagen, opcional */
+}
+.jugador-nombre {
+    background-color: #073181; /* Color de fondo azul oscuro */
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; /* Bordes redondeados para el nombre, opcional */
+}
+.jugador-detalle {
+   
+    margin: 5px 0;
+    font-size: 16px; /* Ajustar el tamaño de la fuente */
+}
+.selector-container {
+    display: flex;
+    justify-content: space-between;
+}
+.selector {
+    width: 48%;
+}
+select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

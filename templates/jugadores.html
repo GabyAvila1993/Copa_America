@@ -5,28 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información del Jugador</title>
     <link rel="stylesheet" href="../static/css/style_jugadores.css">
-    <style>
-        .jugador-container {
-            width: 300px;
-            margin: auto;
-            border: 1px solid #000;
-            padding: 20px;
-            text-align: center;
-        }
-        .jugador-foto img {
-            width: 100px;
-            height: 100px;
-        }
-        .jugador-nombre {
-            background-color: #073181;
-            color: #fff;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .jugador-detalle {
-            margin: 5px 0;
-        }
-    </style>
+
 </head>
 <body>
 
@@ -52,29 +31,31 @@
     <section class="contenedor">
         <!-- Formulario de selección -->
         <form method="POST">
-            <!-- Selección del país -->
-            <div class="selector">
-                <h3>Seleccionar País</h3>
-                <select name="country" onchange="this.form.submit()">
-                    <option value="">Seleccione un país</option>
-                    {% for seleccion in selecciones %}
-                        <option value="{{ seleccion }}" {% if seleccion == request.form.get('country') %}selected{% endif %}>{{ seleccion }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <!-- Selección del jugador (si se seleccionó un país) -->
-            {% if jugadores %}
+            <div class="selector-container">
+                <!-- Selección del país -->
                 <div class="selector">
-                    <h3>Seleccionar Jugador</h3>
-                    <select name="player_id" onchange="this.form.submit()">
-                        <option value="">Seleccione un jugador</option>
-                        {% for jugador in jugadores %}
-                            <option value="{{ jugador[0] }}" {% if jugador[0] == request.form.get('player_id') %}selected{% endif %}>{{ jugador[1] }} {{ jugador[2] }}</option>
+                    <h3>Seleccionar País</h3>
+                    <select name="country" onchange="this.form.submit()">
+                        <option value="">Seleccione un país</option>
+                        {% for seleccion in selecciones %}
+                            <option value="{{ seleccion }}" {% if seleccion == request.form.get('country') %}selected{% endif %}>{{ seleccion }}</option>
                         {% endfor %}
                     </select>
                 </div>
-            {% endif %}
+
+                <!-- Selección del jugador (si se seleccionó un país) -->
+                {% if jugadores %}
+                    <div class="selector">
+                        <h3>Seleccionar Jugador</h3>
+                        <select name="player_id" onchange="this.form.submit()">
+                            <option value="">Seleccione un jugador</option>
+                            {% for jugador in jugadores %}
+                                <option value="{{ jugador[0] }}" {% if jugador[0] == request.form.get('player_id') %}selected{% endif %}>{{ jugador[1] }} {{ jugador[2] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}
+            </div>
         </form>
 
         <!-- Mostrar información del jugador (si se seleccionó un jugador) -->
@@ -89,6 +70,15 @@
                 <div class="jugador-detalle">Clubes anteriores: {{ jugador_info[4] }}</div>
                 <div class="jugador-detalle">Tarjetas rojas: {{ jugador_info[5] }}</div>
                 <div class="jugador-detalle">Tarjetas amarillas: {{ jugador_info[6] }}</div>
+                <div class="jugador-detalle">Altura: {{ jugador_info[8] }} m</div>
+                <div class="jugador-detalle">Peso: {{ jugador_info[9] }} kg</div>
+                <div class="jugador-detalle">Goles totales: {{ jugador_info[10] }}</div>
+                <div class="jugador-detalle">Asistencias totales: {{ jugador_info[11] }}</div>
+                <div class="jugador-detalle">Partidos totales: {{ jugador_info[12] }}</div>
+                <div class="jugador-detalle">Lesiones recientes: {{ jugador_info[13] }}</div>
+                <div class="jugador-detalle">Redes sociales: {{ jugador_info[14] }}</div>
+                <div class="jugador-detalle">Pie dominante: {{ jugador_info[15] }}</div>
+                <div class="jugador-detalle">Fecha de nacimiento: {{ jugador_info[16] }}</div>
             </div>
         {% endif %}
     </section>
