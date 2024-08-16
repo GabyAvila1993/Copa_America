@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../static/css/style_estadisticas.css">
     <!-- <link rel="stylesheet" href="../static/css/style_estadisticas.css"> -->
 </head>
+
 <body>
 
     {% extends "layout.html" %}
@@ -14,19 +16,7 @@
     {% block title %}Inicio{% endblock %}
 
     {% block content %}
-
-    <!-- <section class="inicio_fijo">
-        <img src="../static/image/Logo recortado.png" alt="">
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
-                <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
-            </ul>
-        </nav>
-    </section> -->
+    
     <div class="container">
         <h1>Comparador de Jugadores de la Copa América</h1>
 
@@ -71,7 +61,9 @@
                     </tr>
                 </thead>
                 <tbody id="estadisticas">
-                    <tr><td colspan="3">Selecciona jugadores para comparar sus estadísticas.</td></tr>
+                    <tr>
+                        <td colspan="3">Selecciona jugadores para comparar sus estadísticas.</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -82,17 +74,17 @@
         function calcularColor(percentage) {
             const red = Math.min(255, 2 * (100 - percentage));  // Rojo disminuye con el aumento del porcentaje
             const green = Math.min(255, 2 * percentage);        // Verde aumenta con el porcentaje
-            return rgb(${red}, ${green}, 0);                  // De rojo a verde
+            return `rgb(${red}, ${green}, 0)`;                  // De rojo a verde
         }
 
         // Función para crear una barra de progreso con el porcentaje visible
         function crearBarraDeProgreso(percentage) {
             const color = calcularColor(percentage);
             return `
-                <div style="background-color: ${color}; width: ${percentage}%; height: 100%; text-align: center; color: black;">
-                    ${percentage}%
-                </div>
-            `;
+            <div style="background-color: ${color}; width: ${percentage}%; height: 100%; text-align: center; color: black;">
+                ${percentage}%
+            </div>
+        `;
         }
 
         // Comparar estadísticas cuando se seleccionan jugadores
@@ -101,8 +93,8 @@
             const jugador2 = $('#jugador2').val();
 
             if (jugador1 && jugador2) {
-                $.get('/estadisticas', { jugador: jugador1 }, function(stats1) {
-                    $.get('/estadisticas', { jugador: jugador2 }, function(stats2) {
+                $.get('/estadisticas', { jugador: jugador1 }, function (stats1) {
+                    $.get('/estadisticas', { jugador: jugador2 }, function (stats2) {
                         $('#jugador1-nombre').text(jugador1);
                         $('#jugador2-nombre').text(jugador2);
                         $('#estadisticas').html(`
@@ -325,22 +317,22 @@
 
         // Llamar a obtenerJugadores cuando se selecciona una selección
         function obtenerJugadores(idSeleccion, idJugador) {
-            const seleccion = $(#${idSeleccion}).val();
-            $.get('/jugadores', { seleccion: seleccion }, function(data) {
-                const $jugador = $(#${idJugador});
+            const seleccion = $(`#${idSeleccion}`).val();
+            $.get('/jugadores', { seleccion: seleccion }, function (data) {
+                const $jugador = $(`#${idJugador}`);
                 $jugador.empty();
                 $jugador.append('<option value="">Selecciona un jugador</option>');
-                data.forEach(function(jugador) {
-                    $jugador.append(<option value="${jugador.nombre}">${jugador.nombre}</option>);
+                data.forEach(function (jugador) {
+                    $jugador.append(`<option value="${jugador.nombre}">${jugador.nombre}</option>`);
                 });
             });
         }
 
-        $('#seleccion1').change(function() {
+        $('#seleccion1').change(function () {
             obtenerJugadores('seleccion1', 'jugador1');
         });
 
-        $('#seleccion2').change(function() {
+        $('#seleccion2').change(function () {
             obtenerJugadores('seleccion2', 'jugador2');
         });
 
@@ -349,7 +341,9 @@
     </script>
     {% endblock %}
 </body>
+
 </html>
 
 </body>
+
 </html>

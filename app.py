@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Configuración de la base de datos MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = '123456789'
 app.config['MYSQL_DB'] = 'copa_america'
 
 mysql = MySQL(app)
@@ -43,16 +43,22 @@ def obtener_jugadores_por_seleccion():
 # Ruta para obtener y mostrar estadísticas de un jugador específico
 @app.route('/estadisticas', methods=['GET'])
 def estadisticas():
+    # Obtener selecciones desde la base de datos
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT DISTINCT nacionalidad FROM jugadores")
+    selecciones = [row[0] for row in cursor.fetchall()]
+    cursor.close()
+
+    # Procesamiento del jugador si está seleccionado
     nombre_completo = request.args.get('jugador')
     
     if not nombre_completo:
-        # Si no se proporciona el nombre del jugador, muestra un mensaje o redirige a otra página
-        return render_template('estadisticas.html', error="No se proporcionó un jugador. Selecciona uno para ver sus estadísticas.")
+        return render_template('estadisticas.html', selecciones=selecciones, error="No se proporcionó un jugador. Selecciona uno para ver sus estadísticas.")
 
     try:
         nombre, apellido = nombre_completo.split()
     except ValueError:
-        return render_template('estadisticas.html', error="El formato del nombre es incorrecto.")
+        return render_template('estadisticas.html', selecciones=selecciones, error="El formato del nombre es incorrecto.")
 
     cursor = mysql.connection.cursor()
     cursor.execute("SELECT * FROM estadisticas WHERE nombre = %s AND apellido = %s", (nombre, apellido))
@@ -98,7 +104,7 @@ def estadisticas():
         }
         return jsonify(estadisticas)
     else:
-        return render_template('estadisticas.html', error="No se encontraron estadísticas para el jugador especificado.")
+        return render_template('estadisticas.html', error="No se encontraron estadísticas para el jugador especificado.")
 
 # Ruta para la página de login
 @app.route('/login')
