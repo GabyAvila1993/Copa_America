@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <section class="inicio_fijo">
+
+<!-- LAYOUT para navbar -->
+    {% extends "layout.html" %}
+
+    {% block title %}Inicio{% endblock %}
+
+    {% block content %}
+
+
+    <!-- <section class="inicio_fijo">
         <img src="../static/image/Logo recortado.png" alt="">
         <nav class="nav">
             <ul class="nav-list">
@@ -21,7 +30,7 @@
                 <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
             </ul>
         </nav>
-    </section>
+    </section> -->
 
     <section class="contenido">
         <h2>Copa America</h2>
@@ -42,10 +51,7 @@
             más
             oportunidades para competir a nivel internacional</p>
         <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium cumque asperiores a quas nesciunt
-            expedita, et saepe corrupti officiis molestiae hic commodi omnis tempora eaque doloribus blanditiis dolorum
-            in eos modi cupiditate excepturi nam voluptatibus? Sunt unde ut dolore ducimus eius perferendis aliquid
-            dignissimos blanditiis necessitatibus. Dolore eius deleniti quae quos dicta assumenda </p>
+        
     </section>
     <div class="titulo">
         <h2>Grupos</h2>
@@ -93,7 +99,8 @@
             </ul>
         </article>
     </section>
-
+    
+    {% endblock %}
 
 </body>
 

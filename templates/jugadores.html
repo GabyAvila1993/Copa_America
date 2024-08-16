@@ -34,6 +34,13 @@
     </style>
 </head>
 <body>
+
+    {% extends "layout.html" %}
+
+    {% block title %}Inicio{% endblock %}
+
+    {% block content %}
+
     <section class="inicio_fijo">
         <img src="../static/image/Logo recortado.png" alt="">
         <nav class="nav">
@@ -65,5 +72,6 @@
         <div class="jugador-detalle">Tarjetas rojas: {{ jugadores.tarjetas_rojas }}</div>
         <div class="jugador-detalle">Tarjetas amarillas: {{ jugadores.tarjetas_amarillas }}</div>
     </div>
+    {% endblock %}
 </body>
 </html>

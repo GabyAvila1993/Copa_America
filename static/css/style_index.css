@@ -222,3 +222,33 @@ body {
     height: 20px; /* Reducido el tamaño de las imágenes */
     width: 20px;
 }
+
+/* Aumento de tamaño en los iconos de las banderas */
+.lista-grupo li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 0;
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+}
+
+.lista-grupo li img:hover {
+    transform: scale(2.0); /* Aumenta el tamaño del logo al 150% */
+}
+
+/* LAYOUT */
+
+.lista-grupo li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+.lista-grupo li img:hover {
+    transform: scale(1.2); /* Aumenta el tamaño al 120% */
+}
+
+.inicio_fijo {
+    transition: top 0.3s ease-in-out;
+}

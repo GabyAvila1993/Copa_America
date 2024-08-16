@@ -8,7 +8,14 @@
     <!-- <link rel="stylesheet" href="../static/css/style_estadisticas.css"> -->
 </head>
 <body>
-    <section class="inicio_fijo">
+
+    {% extends "layout.html" %}
+
+    {% block title %}Inicio{% endblock %}
+
+    {% block content %}
+
+    <!-- <section class="inicio_fijo">
         <img src="../static/image/Logo recortado.png" alt="">
         <nav class="nav">
             <ul class="nav-list">
@@ -19,7 +26,7 @@
                 <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
             </ul>
         </nav>
-    </section>
+    </section> -->
     <div class="container">
         <h1>Comparador de Jugadores de la Copa América</h1>
 
@@ -340,6 +347,7 @@
         $('#jugador1').change(compararJugadores);
         $('#jugador2').change(compararJugadores);
     </script>
+    {% endblock %}
 </body>
 </html>
 

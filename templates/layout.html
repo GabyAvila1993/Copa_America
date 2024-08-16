@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación{% endblock %}</title>
+    <!-- Link al CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <!-- Navbar -->
+    <section class="inicio_fijo">
+        <img src="{{ url_for('static', filename='image/Logo recortado.png') }}" alt="">
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadísticas</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <!-- Contenido dinámico -->
+    <div class="contenido">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Script para ocultar/mostrar el navbar -->
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.inicio_fijo');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                navbar.style.top = '-100px';
+            } else {
+                navbar.style.top = '0';
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
