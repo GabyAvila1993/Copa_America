@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas</title>
+    <link rel="stylesheet" href="../static/css/style_estadisticas.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+    {% extends "layout.html" %}
+
+    {% block title %}Estadísticas{% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1>Comparador de Jugadores de la Copa América</h1>
+
+        <div class="menu">
+            <label for="seleccion1">Selección 1:</label>
+            <select id="seleccion1">
+                <option value="">Selecciona un país</option>
+                {% for seleccion in selecciones %}
+                <option value="{{ seleccion }}">{{ seleccion }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="jugador1">Jugador 1:</label>
+            <select id="jugador1">
+                <option value="">Selecciona un jugador</option>
+            </select>
+        </div>
+
+        <div class="menu">
+            <label for="seleccion2">Selección 2:</label>
+            <select id="seleccion2">
+                <option value="">Selecciona un país</option>
+                {% for seleccion in selecciones %}
+                <option value="{{ seleccion }}">{{ seleccion }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="jugador2">Jugador 2:</label>
+            <select id="jugador2">
+                <option value="">Selecciona un jugador</option>
+            </select>
+        </div>
+
+        <div id="comparacion">
+            <h2>Comparación</h2>
+            <table id="tabla-comparacion">
+                <thead>
+                    <tr>
+                        <th id="jugador1-nombre"></th>
+                        <th></th>
+                        <th id="jugador2-nombre"></th>
+                    </tr>
+                </thead>
+                <tbody id="estadisticas">
+                    <tr>
+                        <td colspan="3">Selecciona jugadores para comparar sus estadísticas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function calcularColor(percentage) {
+            const red = Math.min(255, 2 * (100 - percentage));
+            const green = Math.min(255, 2 * percentage);
+            return `rgb(${red}, ${green}, 0)`;
+        }
+
+        function crearBarraDeProgreso(percentage) {
+            const color = calcularColor(percentage);
+            return `
+            <div style="background-color: ${color}; width: ${percentage}%; height: 100%; text-align: center; color: black;">
+                ${percentage}%
+            </div>
+        `;
+        }
+
+        function compararJugadores() {
+            const jugador1 = $('#jugador1').val();
+            const jugador2 = $('#jugador2').val();
+
+            if (jugador1 && jugador2) {
+                $.get('/estadisticas', { jugador: jugador1 }, function (stats1) {
+                    $.get('/estadisticas', { jugador: jugador2 }, function (stats2) {
+                        $('#jugador1-nombre').text(jugador1);
+                        $('#jugador2-nombre').text(jugador2);
+                        $('#estadisticas').html(`
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.velocidad)}</td>
+                                <td>Velocidad</td>
+                                <td>${crearBarraDeProgreso(stats2.velocidad)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.aceleracion)}</td>
+                                <td>Aceleración</td>
+                                <td>${crearBarraDeProgreso(stats2.aceleracion)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.definicion)}</td>
+                                <td>Definición</td>
+                                <td>${crearBarraDeProgreso(stats2.definicion)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.posicion_ataque)}</td>
+                                <td>Posición de Ataque</td>
+                                <td>${crearBarraDeProgreso(stats2.posicion_ataque)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.potencia)}</td>
+                                <td>Potencia</td>
+                                <td>${crearBarraDeProgreso(stats2.potencia)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.tiros_lejanos)}</td>
+                                <td>Tiros Lejanos</td>
+                                <td>${crearBarraDeProgreso(stats2.tiros_lejanos)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.penaltis)}</td>
+                                <td>Penaltis</td>
+                                <td>${crearBarraDeProgreso(stats2.penaltis)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.voleas)}</td>
+                                <td>Voleas</td>
+                                <td>${crearBarraDeProgreso(stats2.voleas)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.vision)}</td>
+                                <td>Visión</td>
+                                <td>${crearBarraDeProgreso(stats2.vision)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.centros)}</td>
+                                <td>Centros</td>
+                                <td>${crearBarraDeProgreso(stats2.centros)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.precision_faltas)}</td>
+                                <td>Precisión en Faltas</td>
+                                <td>${crearBarraDeProgreso(stats2.precision_faltas)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.pases_largos)}</td>
+                                <td>Pases Largos</td>
+                                <td>${crearBarraDeProgreso(stats2.pases_largos)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.pases_cortos)}</td>
+                                <td>Pases Cortos</td>
+                                <td>${crearBarraDeProgreso(stats2.pases_cortos)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.efecto)}</td>
+                                <td>Efecto</td>
+                                <td>${crearBarraDeProgreso(stats2.efecto)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.agilidad)}</td>
+                                <td>Agilidad</td>
+                                <td>${crearBarraDeProgreso(stats2.agilidad)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.equilibrio)}</td>
+                                <td>Equilibrio</td>
+                                <td>${crearBarraDeProgreso(stats2.equilibrio)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.reflejo)}</td>
+                                <td>Reflejo</td>
+                                <td>${crearBarraDeProgreso(stats2.reflejo)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.compostura)}</td>
+                                <td>Compostura</td>
+                                <td>${crearBarraDeProgreso(stats2.compostura)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.control_de_balon)}</td>
+                                <td>Control de Balón</td>
+                                <td>${crearBarraDeProgreso(stats2.control_de_balon)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.regates)}</td>
+                                <td>Regates</td>
+                                <td>${crearBarraDeProgreso(stats2.regates)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.intercepciones)}</td>
+                                <td>Intercepciones</td>
+                                <td>${crearBarraDeProgreso(stats2.intercepciones)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.presicion_de_cabeza)}</td>
+                                <td>Precisión de Cabeza</td>
+                                <td>${crearBarraDeProgreso(stats2.presicion_de_cabeza)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.conciencia_defensiva)}</td>
+                                <td>Conciencia Defensiva</td>
+                                <td>${crearBarraDeProgreso(stats2.conciencia_defensiva)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.robo)}</td>
+                                <td>Robo</td>
+                                <td>${crearBarraDeProgreso(stats2.robo)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.entrada_agresiva)}</td>
+                                <td>Entrada Agresiva</td>
+                                <td>${crearBarraDeProgreso(stats2.entrada_agresiva)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.salto)}</td>
+                                <td>Salto</td>
+                                <td>${crearBarraDeProgreso(stats2.salto)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.resistencia)}</td>
+                                <td>Resistencia</td>
+                                <td>${crearBarraDeProgreso(stats2.resistencia)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.fuerza)}</td>
+                                <td>Fuerza</td>
+                                <td>${crearBarraDeProgreso(stats2.fuerza)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.agresividad)}</td>
+                                <td>Agresividad</td>
+                                <td>${crearBarraDeProgreso(stats2.agresividad)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.estirada)}</td>
+                                <td>Estirada</td>
+                                <td>${crearBarraDeProgreso(stats2.estirada)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.paradas)}</td>
+                                <td>Paradas</td>
+                                <td>${crearBarraDeProgreso(stats2.paradas)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.saques)}</td>
+                                <td>Saques</td>
+                                <td>${crearBarraDeProgreso(stats2.saques)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.colocacion)}</td>
+                                <td>Colocación</td>
+                                <td>${crearBarraDeProgreso(stats2.colocacion)}</td>
+                            </tr>
+                            <tr>
+                                <td>${crearBarraDeProgreso(stats1.reflejos)}</td>
+                                <td>Reflejos</td>
+                                <td>${crearBarraDeProgreso(stats2.reflejos)}</td>
+                            </tr>
+                        `);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error en la solicitud de estadísticas del jugador 2:', textStatus, errorThrown);
+                    });
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    console.error('Error en la solicitud de estadísticas del jugador 1:', textStatus, errorThrown);
+                });
+            } else {
+                $('#tabla-comparacion').find('tbody').html('<tr><td colspan="3">Selecciona ambos jugadores para ver la comparación.</td></tr>');
+            }
+        }
+
+        $(document).ready(function() {
+            $('#seleccion1').change(function() {
+                obtenerJugadores('seleccion1', 'jugador1');
+            });
+
+            $('#seleccion2').change(function() {
+                obtenerJugadores('seleccion2', 'jugador2');
+            });
+
+            $('#jugador1, #jugador2').change(function() {
+                compararJugadores();
+            });
+        });
+
+        function obtenerJugadores(idSeleccion, idJugador) {
+            const seleccion = $(`#${idSeleccion}`).val();
+            $.get('/jugadores/seleccion', { seleccion: seleccion }, function (data) {
+                const $jugador = $(`#${idJugador}`);
+                $jugador.empty();
+                $jugador.append('<option value="">Selecciona un jugador</option>');
+                data.forEach(function (jugador) {
+                    $jugador.append(`<option value="${jugador.nombre}">${jugador.nombre}</option>`);
+                });
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud de jugadores:', textStatus, errorThrown);
+            });
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>

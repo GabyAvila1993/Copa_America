@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <!-- Link al CSS -->
+    <link rel="stylesheet" href="../static/css/style_index.css">
+</head>
+
+<body>
+
+<!-- LAYOUT para navbar -->
+    {% extends "layout.html" %}
+
+    {% block title %}Inicio{% endblock %}
+
+    {% block content %}
+
+
+    <!-- <section class="inicio_fijo">
+        <img src="../static/image/Logo recortado.png" alt="">
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
+                <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
+            </ul>
+        </nav>
+    </section> -->
+
+    <section class="contenido">
+        <h2>Copa America</h2>
+        <p>La Copa América es el principal torneo de fútbol de selecciones nacionales de Sudamérica, organizado por la
+            Confederación Sudamericana de Fútbol (CONMEBOL). Comenzó en 1916 y es el torneo internacional de selecciones
+            más
+            antiguo del continente. Participan los diez equipos nacionales de Sudamérica: Argentina, Bolivia, Brasil,
+            Chile,
+            Colombia, Ecuador, Paraguay, Perú, Uruguay y Venezuela. El torneo se celebra cada dos o cuatro años y ha
+            sido
+            testigo de algunos de los momentos más icónicos del fútbol sudamericano. En ocaciones La Copa América a
+            veces
+            incluye equipos de la Confederación de Fútbol Asociación de América del Norte, Centroamérica y el Caribe
+            (CONCACAF) como invitados para aumentar la competencia y atraer más interés. Este formato ha permitido la
+            participación de selecciones como México, Estados Unidos y Costa Rica, entre otros, en ediciones recientes
+            del
+            torneo. La inclusión de equipos de la CONCACAF enriquece el evento y proporciona a los equipos sudamericanos
+            más
+            oportunidades para competir a nivel internacional</p>
+        <br>
+        
+    </section>
+    <div class="titulo">
+        <h2>Grupos</h2>
+    </div>
+    
+    <section class="grupos">
+        
+        <article class="grupo">
+            <h3>Grupo A</h3>
+            <ul class="lista-grupo">
+                <li><img src="../static/image/Logo_Argentina-removebg-preview.png" alt="Argentina"> Argentina</li>
+                <li><img src="../static/image/Logo Canada Sin Fondos.png" alt="Canada"> Canada</li>
+                <li><img src="../static/imagE//Logo_Chile-removebg-preview.png" alt="Chile"> Chile</li>
+                <li><img src="../static/image/Logo Peru Sin Fondos.png" alt="Peru"> Peru</li>
+            </ul>
+        </article>
+
+        <article class="grupo">
+            <h3>Grupo B</h3>
+            <ul class="lista-grupo">
+                <li><img src="../static/image/Logo_Mexico-removebg-preview.png" alt="Mexico"> Mexico</li>
+                <li><img src="../static/image/Logo Euador Sin Fondos.png" alt="Ecuador"> Ecuador</li>
+                <li><img src="../static/image/Logo_Jamaica-removebg-preview.png" alt="Jamaica"> Jamaica</li>
+                <li><img src="../static/image/Logo_Venezuela-removebg-preview.png" alt="Venezuela"> Venezuela</li>
+            </ul>
+        </article>
+
+        <article class="grupo">
+            <h3>Grupo C</h3>
+            <ul class="lista-grupo">
+                <li><img src="../static/image//Logo_Uruguay-removebg-preview.png" alt="Uruguay"> Uruguay</li>
+                <li><img src="../static/image/Logo_Panama-removebg-preview.png" alt="Panama" > Panama</li>
+                <li><img src="../static/image//Logo_EEUU-removebg-preview.png" alt="EEUU"> EEUU</li>
+                <li><img src="../static/image/Logo_Bolivia-removebg-preview.png" alt="Bolivia"> Bolivia</li>
+            </ul>
+        </article>
+
+        <article class="grupo">
+            <h3>Grupo D</h3>
+            <ul class="lista-grupo">
+                <li><img src="../static/image/Logo_Colombia-removebg-preview.png" alt="Colombia"> Colombia</li>
+                <li><img src="../static/image/Logo_Braasil-removebg-preview.png" alt="Brasil"> Brasil</li>
+                <li><img src="../static/image/Logo_Costa_Rica-removebg-preview.png" alt="Costa Rica"> Costa Rica</li>
+                <li><img src="../static/image/Logo_Paraguay-removebg-preview.png" alt="Paraguay"> Paraguay</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>Enfrentamientos en fase de grupo</p>
+            <p>1° Ronda</p>
+            <p>Grupo A</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Jueves 20/06</p>
+            <p class="paises-enfrentamientos">Argentina - Canada</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/argentina.png" alt="Argentina" class="bandera"> 
+                2 - 0
+                <img src="../static/image/canada.png" alt="Canada" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Julian Alvarez (49')  Lautaro Martinez (88') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="fechas-enfrentamientos">Viernes 21/06</p>
+            <p class="paises-enfrentamientos">Perú - Chile</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bandera.png" alt="Peru" class="bandera"> 
+                0 - 0
+                <img src="../static/image/chile.png" alt="Chile" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo B</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Sábado 22/06</p>
+            <p class="paises-enfrentamientos">Mexico - Jamaica</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/mexico.png" alt="Mexico" class="bandera"> 
+                1 - 0
+                <img src="../static/image/jamaica.png" alt="Jamaica" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Gerardo Arteaga (69') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Ecuador - Venezuela</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bandera (1).png" alt="Ecuador" class="bandera"> 
+                1 - 2
+                <img src="../static/image/venezuela.png" alt="Venezuela" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Jeremy Sarmiento (40') - Jhonder Cádiz (64') Eduardo Bello (74')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo C</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Domingo 23/06</p>
+            <p class="paises-enfrentamientos">Estados Unidos - Bolivia</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/estados-unidos.png" alt="EEUU" class="bandera"> 
+                2 - 0
+                <img src="../static/image/bolivia.png" alt="Bolivia" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Christian Pulisic (3') Folarin Balogun (44') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Uruguay - Panama</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/uruguay.png" alt="Uruguay" class="bandera"> 
+                3 - 1
+                <img src="../static/image/panama.png" alt="Panama" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Maximiliano Araújo (16') Darwin Nuñez (85') Matías Viña (90+1') - Michael Murillo (90+4')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo D</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Lunes 24/06</p>
+            <p class="paises-enfrentamientos">Brasil - Costa Rica</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bandera (2).png" alt="Brasil" class="bandera"> 
+                0 - 0
+                <img src="../static/image/costa-rica.png" alt="CR" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Colombia - Paraguay</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/colombia.png" alt="Colombia" class="bandera"> 
+                2 - 1
+                <img src="../static/image/paraguay.png" alt="Paraguay" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Daniel Muñoz (32') Jefferson Lerma (42') - Julio Enciso (69') 
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>2° Ronda</p>
+            <p>Grupo A</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Martes 25/06</p>
+            <p class="paises-enfrentamientos">Chile - Argentina</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/chile.png" alt="Chile" class="bandera"> 
+                0 - 1
+                <img src="../static/image/argentina.png" alt="Argentina" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles - Lautaro Martinez (88')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Perú - Canada</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bandera.png" alt="Peru" class="bandera"> 
+                0 - 1
+                <img src="../static/image/canada.png" alt="Canada" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles - Jonathan David (74')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo B</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Miércoles 26/06</p>
+            <p class="paises-enfrentamientos">Venezuela - Mexico</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/venezuela.png" alt="Venezuela" class="bandera"> 
+                1 - 0
+                <img src="../static/image/mexico.png" alt="Mexico" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Salomón Rondón (57' (P)) - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Ecuador - Jamaica</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bandera (1).png" alt="Ecuador" class="bandera"> 
+                3 - 1
+                <img src="../static/image/jamaica.png" alt="Jamaica" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Piero Hincapié (13') Kendry Paez (45+4' (P)) Alan Minda (90+1') - Michail Antonio (54')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo C</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Jueves 27/06</p>
+            <p class="paises-enfrentamientos">Panama - Estados Unidos</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/panama.png" alt="Panama" class="bandera"> 
+                2 - 1
+                <img src="../static/image/estados-unidos.png" alt="EEUU" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                César Blackman (26') José Fajardo (83') - Folarin Balogun (22')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Uruguay - Bolivia</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/uruguay.png" alt="Uruguay" class="bandera"> 
+                5 - 0
+                <img src="../static/image/bolivia.png" alt="Bolivia" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Facundo Pellistri (8') Darwin Nuñez (21') Maximiliano Araújo (77') Federico Valverde (81') Rodrigo Bentancur (89') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo D</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Viernes 28/06</p>
+            <p class="paises-enfrentamientos">Paraguay - Brasil</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/paraguay.png" alt="Paraguay" class="bandera">
+                1 - 4
+                <img src="../static/image/bandera (2).png" alt="Brasil" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Omar Alderete (48') - Vinicius Jr. (35', 45+5') Savinho (43') Lucas Paquetá (65' (P))
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Colombia - Costa Rica</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/colombia.png" alt="Colombia" class="bandera">
+                3 - 0
+                <img src="../static/image/costa-rica.png" alt="CR" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Luis Díaz (31' (P)) Davinson Sánchez (59') Jhon Córdoba (62') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>3° Ronda</p>
+            <p>Grupo A</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Sábado 29/06</p>
+            <p class="paises-enfrentamientos">Argentina - Perú</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/argentina.png" alt="Argentina" class="bandera"> 
+                2 - 0
+                <img src="../static/image/bandera.png" alt="Peru" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Lautaro Martinez (47', 86') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Canada - Chile</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/canada.png" alt="Canada" class="bandera">
+                0 - 0
+                <img src="../static/image/chile.png" alt="Chile" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo B</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Domingo 30/06</p>
+            <p class="paises-enfrentamientos">Mexico - Ecuador</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/mexico.png" alt="Mexico" class="bandera">
+                0 - 0
+                <img src="../static/image/bandera (1).png" alt="Ecuador" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Jamaica - Venezuela</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/jamaica.png" alt="Jamaica" class="bandera">
+                0 - 3
+                <img src="../static/image/venezuela.png" alt="Venezuela" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles - Eduard Bello (49') Salomón Rondón (56') Eric Ramírez (85')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo C</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Lunes 01/07</p>
+            <p class="paises-enfrentamientos">Estados Unidos - Uruguay</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/estados-unidos.png" alt="EEUU" class="bandera">
+                0 - 1
+                <img src="../static/image/uruguay.png" alt="Uruguay" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles - Mathías Olivera (66')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Bolivia - Panama</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bolivia.png" alt="Bolivia" class="bandera">
+                1 - 3
+                <img src="../static/image/panama.png" alt="Panama" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Bruno Miranda (69') - José Fajardo (22') Eduardo Guerrero (79') César Yanis (90+1')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>Grupo D</h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Martes 02/07</p>
+            <p class="paises-enfrentamientos">Brasil - Colombia</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/bandera (2).png" alt="Brasil" class="bandera">
+                1 - 1
+                <img src="../static/image/colombia.png" alt="Colombia" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Raphinha (12') - Daniel Muñoz (45+2')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Costa Rica - Paraguay</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/costa-rica.png" alt="CR" class="bandera">
+                2 - 1
+                <img src="../static/image/paraguay.png" alt="Paraguay" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Francisco Quesada (3') Josimar Alcóser (7') - Ramón Sosa (55')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>Cuartos de final</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Jueves 04/07</p>
+            <p class="paises-enfrentamientos">Argentina - Ecuador</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/argentina.png" alt="Argentina" class="bandera"> 
+                1 (4) - (2) 1
+                <img src="../static/image/bandera (1).png" alt="Ecuador" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Lisandro Martinez (35') - Kevin Rodríguez (90+1')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="fechas-enfrentamientos">Viernes 05/07</p>
+            <p class="paises-enfrentamientos">Venezuela - Canada</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/venezuela.png" alt="Venezuela" class="bandera"> 
+                1 (3) - (4) 1
+                <img src="../static/image/canada.png" alt="Canada" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Salomón Rondón (64') - Jacob Shaffelburg (13')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="fechas-enfrentamientos">Sábado 06/07</p>
+            <p class="paises-enfrentamientos">Uruguay - Brasil</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/uruguay.png" alt="Uruguay" class="bandera"> 
+                0 (4) - (2) 0
+                <img src="../static/image/bandera (2).png" alt="Brasil" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="paises-enfrentamientos">Colombia - Panama</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/colombia.png" alt="Colombia" class="bandera">
+                5 - 0
+                <img src="../static/image/panama.png" alt="Panama" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Jhon Córdoba (8) James Rodríguez (15' (P)) Luis Díaz (41') Richard Montoya (70') Miguel Borja (90+4' (P)) - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>Semifinales</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Martes 09/07</p>
+            <p class="paises-enfrentamientos">Argentina - Canada</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/argentina.png" alt="Argentina" class="bandera"> 
+                2 - 0
+                <img src="../static/image/canada.png" alt="Canada" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Julian Alvarez (22') Lionel Messi (51') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h3>
+            <p class="fechas-enfrentamientos">Miércoles 10/07</p>
+            <p class="paises-enfrentamientos">Uruguay - Colombia</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/uruguay.png" alt="Uruguay" class="bandera"> 
+                0 - 1
+                <img src="../static/image/colombia.png" alt="Colombia" class="bandera">
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Sin Goles - Jefferson Lerma (39')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>3° Puesto</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Sábado 13/07</p>
+            <p class="paises-enfrentamientos">Canada - Uruguay</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/canada.png" alt="Canada" class="bandera"> 
+                2 (3) - (4) 2
+                <img src="../static/image/uruguay.png" alt="Uruguay" class="bandera"> 
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Ismaël Koné (22') Jonathan David (80') - Rodrigo Bentancur (8') Luis Suáres (90+2')
+            </p>
+        </article>
+    </section>
+
+    <section class="enfrentamientos-section">
+        <h2>
+            <p>Final</p>
+        </h2>
+        <h3>
+            <p class="fechas-enfrentamientos">Domingo 14/07</p>
+            <p class="paises-enfrentamientos">Argentina - Colombia</p>
+        </h3>
+        <article class="enfrentamientos">
+            <p>
+                <img src="../static/image/argentina.png" alt="Argentina" class="bandera"> 
+                1 - 0
+                <img src="../static/image/colombia.png" alt="Colombia" class="bandera"> 
+            </p>
+            <p>
+                Goles
+            </p>
+            <p>
+                Lautaro Martinez (112') - Sin Goles
+            </p>
+        </article>
+    </section>
+
+    
+
+    {% endblock %}
+
+</body>
+
+</html>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias</title>
+    <link rel="stylesheet" href="../static/css/style_login.css">
+</head>
+
+<body>
+    <section class="inicio_fijo">
+        <img src="../static/image/Logo recortado.png" alt="">
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('estadisticas') }}">Estadisticas</a></li>
+                <li><a href="{{ url_for('jugadores') }}">Jugadores</a></li>
+                <li><a href="{{ url_for('login') }}">Noticias</a></li>
+                <li><a href="{{ url_for('selecciones') }}">Selecciones</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <!-- Sección de noticias con 4 cuadros -->
+    <section class="news-section">
+        <div class="card">
+            <img src="/static/image/image1.jpg" alt="Imagen 1" class="card-img">
+            <div class="card-content">
+                <h3>El equipo ideal de la CONMEBOL Copa América 2024™</h3>
+                <p>Son cinco argentinos, dos colombianos, un ecuatoriano, un canadiense, un uruguayo y un brasileño.
+                    Fue la 48° edicion del torneo.
+                    La CONMEBOL Copa América 2024™ fue un torneo inolvidable: 32 partidos, entre el 20 de junio y el 14 de julio, que terminaron con Argentina ganando su 16° título en el certamen.</p>
+                <a href="https://copaamerica.com/es/novedades/equipo-ideal-torneo-copa-america-2024" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/static/image/image2.jpg" alt="Imagen 2" class="card-img">
+            <div class="card-content">
+                <h3>El máximo goleador de la CONMEBOL Copa América™</h3>
+                <p>El argentino Lautaro Martínez fue el último goleador, con 5 tantos.
+                    Se lleva registro desde la primera edición del torneo, hace más de un siglo.</p>
+                <a href="https://copaamerica.com/es/novedades/maximo-goleador-todas-ediciones-conmebol-copa-america" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/static/image/image3.jpg" alt="Imagen 3" class="card-img">
+            <div class="card-content">
+                <h3>Argentina venció a Colombia y es el campeón de la CONMEBOL Copa América™</h3>
+                <p>Argentina logró su 16° título en el certamen, convirtiéndose en el máximo campeón.
+                    Scaloni logró su cuarto título como entrenador de Argentina.</p>
+                <a href="https://copaamerica.com/es/novedades/argentina-campeon-colombia-copa-america-lautaro-martinez" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/static/image/image4.jpg" alt="Imagen 4" class="card-img">
+            <div class="card-content">
+                <h3>Todos los campeones de la CONMEBOL Copa América™ en la historia</h3>
+                <p>Argentina y Colombia están en la lista de campeones en la historia del torneo.
+                    Mira quiénes fueron los campeones a lo largo de 108 años de competencia.</p>
+                <a href="https://copaamerica.com/es/novedades/todos-los-campeones-de-la-conmebol-copa-america" class="btn-ver-mas">Ver más</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

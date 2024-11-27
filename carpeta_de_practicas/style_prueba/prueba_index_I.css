@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Fuentes de texto */
+@font-face{
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Italic.ttf');
+}
+
+@font-face{
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins/Poppins-MediumItalic.ttf');
+}
+
+html{
+    background-color: #073181;
+}
+
+/* CSS PARA GRUPOS */
+
+.grupo{
+    display: grid;
+    grid-template-columns: repeat(4,23%); 
+    grid-template-rows: repeat(auto, 400px);
+    gap: 20px;
+    padding: 20px;
+    
+}
+
+.grupo{
+    /* justify-content: center; */
+    font-size: 20px;
+    font-family: 'Poppins';
+    background-color: #073181;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.grupo h3{
+    background-color: #fff;
+    color: #073181;
+    text-align: center;
+}
+
+.caja_grupo{
+    display: grid;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+/* .caja_grupo{
+    box-sizing: top;
+}
+ */
+.partidos img{
+    height: 30px;
+    width: 30px;
+}
+.lista-grupo {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-grupo li {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.lista-grupo li img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 0;
+}
+

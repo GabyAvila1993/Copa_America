@@ -1,0 +1,205 @@
+@font-face{
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Italic.ttf');
+}
+
+@font-face{
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins/Poppins-MediumItalic.ttf');
+}
+
+/* Reset de CSS */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.jugador-foto img {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border-radius: 50%; /* Bordes redondeados para la imagen, opcional */
+}
+
+/* Fuente general */
+html{
+    font-family: 'Poppins', sans-serif;
+    /* font-size: 15px; */
+    background-color: #073181;
+}
+
+.selector-container {
+    display: flex; /* Usar flexbox para alinear los elementos en una fila */
+    justify-content: space-between; /* Espacio entre los selectores */
+    gap: 20px; /* Espacio entre los selectores */
+    margin: 20px auto; /* Espaciado alrededor del contenedor */
+    max-width: 700px; /* Ancho máximo para el contenedor */
+}
+
+.selector {
+    flex: 1; /* Cada selector ocupará un ancho igual */
+    background-color: #073181; /* Fondo azul oscuro */
+    border: 3px solid #ff0000; /* Borde rojo */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alineación centrada */
+}
+
+.selector select {
+    width: 100%; /* Ancho del selector ajustado al contenedor */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde por defecto */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: #fff; /* Color del texto */
+    background-color: #001988; /* Fondo del select */
+}
+
+.selector select:focus {
+    outline: none; /* Sin borde al hacer foco */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra al hacer foco */
+}
+
+.inicio_fijo{
+    background-color: #073181;
+    color: black;
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    margin: 0; /* Cambiamos el margin a 0 para eliminar cualquier espacio no deseado */
+    border: 3px solid #e80c0d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Nos aseguramos que inicio_fijo quede arriba permanentemente */
+}
+
+.inicio_fijo img {
+    width: 30%;
+    height: 100%;
+    margin: 0 2px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white; 
+    padding: 10px;
+    background-color: #e80c0d; 
+    border-radius: 60px;
+}
+
+.nav-list li a:hover {
+    background-color: black; 
+}
+/* Copiar todo lo que está arriba de esto para que quede fijo el mismo banner */
+/* ------------------------------------------------------------------------------- */
+
+/* CSS PARA TABLAS */
+body {
+    margin-top: 100px;
+    font-family: 'Poppins';
+    background-color: #073181;
+    color: #fff;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.menu {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#comparacion {
+    margin-top: 40px;
+}
+
+#tabla-comparacion {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Interior tabla */
+#tabla-comparacion th,
+#tabla-comparacion td {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Modificar nombre de jugadores en la tabla */
+#tabla-comparacion th {
+    background-color: #111;
+    color: #ddd;
+    font-weight: bold;
+}
+
+#tabla-comparacion td > div {
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.jugador-container {
+    
+    width: 400px;
+    margin: auto;
+    border: 3px solid #ff0000; /* Borde rojo */
+    padding: 50px; /* Reducido el padding para que no se vea tan grande */
+    text-align: center;
+    background-color: #001988; /* Color de fondo gris claro, cámbialo según prefieras */
+    border-radius: 10px; /* Bordes redondeados opcional */
+}
+.jugador-foto img {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border-radius: 50%; /* Bordes redondeados para la imagen, opcional */
+}
+.jugador-nombre {
+    background-color: #073181; /* Color de fondo azul oscuro */
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; /* Bordes redondeados para el nombre, opcional */
+}
+.jugador-detalle {
+   
+    margin: 5px 0;
+    font-size: 16px; /* Ajustar el tamaño de la fuente */
+}
+.selector-container {
+    display: flex;
+    justify-content: space-between;
+}
+.selector {
+    width: 48%;
+}
+select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
